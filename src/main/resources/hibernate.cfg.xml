@@ -1,0 +1,26 @@
+<!-- Write first <hibernate then press the auto complete to write this-->
+<hibernate-configuration xmlns="http://www.hibernate.org/xsd/orm/cfg">
+    <session-factory>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/DB</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">root</property>
+        
+<!--        We can tell the Dialect (Like text or varchar or varchar2) NOT Compolsury but helpful-->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+<!--     If the table not found then create a table for it  BUT THIS IS WILL CREATE TABLE for each row added  -->
+<!--        <property name="hibernate.hbm2ddl.auto">create</property>-->
+
+<!--        So we will use update this will create table only one time and if we add column in table it will only add column only and will not
+create a new table every time and is smart-->
+                <property name="hibernate.hbm2ddl.auto">update</property>
+
+
+<!--        To see the Query that Hibernate executes -->
+        <property name="hibernate.show_sql">true</property>
+        
+<!--        To see the Query in a Structured Format-->
+        <property name="hibernate.format_sql">true</property>
+    </session-factory>
+</hibernate-configuration>
