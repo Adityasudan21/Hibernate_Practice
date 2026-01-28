@@ -10,11 +10,11 @@
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 
 <!--     If the table not found then create a table for it  BUT THIS IS WILL CREATE TABLE for each row added  -->
-<!--        <property name="hibernate.hbm2ddl.auto">create</property>-->
+        <property name="hibernate.hbm2ddl.auto">create</property>
 
 <!--        So we will use update this will create table only one time and if we add column in table it will only add column only and will not
 create a new table every time and is smart-->
-                <property name="hibernate.hbm2ddl.auto">update</property>
+<!--                <property name="hibernate.hbm2ddl.auto">update</property>-->
 
 
 <!--        To see the Query that Hibernate executes -->

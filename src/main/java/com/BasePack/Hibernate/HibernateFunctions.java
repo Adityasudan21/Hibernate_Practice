@@ -47,4 +47,44 @@ public class HibernateFunctions {
         sf.close();
         return s != null;
     }
+
+    //Change value of a row in a table
+    public void updateRow(Student s1){
+        SessionFactory sf=new Configuration()
+                .addAnnotatedClass(com.BasePack.Hibernate.Student.class)
+                .configure()
+                .buildSessionFactory(); //Heavyweight close and open mindfully
+
+
+        Session session=sf.openSession(); //lightweight open close when needed
+
+        //Main Line
+        session.merge(s1);   // This is udpate the entry with object and add object if no entry found
+        // This fires first the SELECT query then UPDATE query.
+
+        Transaction trans= session.beginTransaction();
+        //After this we need to save this (OR COMMIT this) This is done like a transaction as this is Manilpulation of Table Data
+        trans.commit();
+        session.close();
+        sf.close();
+    }
+    //Delete a row
+    public void deleteRow(Student s1){
+        SessionFactory sf=new Configuration()
+                .addAnnotatedClass(com.BasePack.Hibernate.Student.class)
+                .configure()
+                .buildSessionFactory(); //Heavyweight close and open mindfully
+
+
+        Session session=sf.openSession(); //lightweight open close when needed
+
+        //Main Line
+        session.remove(s1);   // This is Delete the entry with object
+
+        Transaction trans= session.beginTransaction();
+        //After this we need to save this (OR COMMIT this) This is done like a transaction as this is Manilpulation of Table Data
+        trans.commit();
+        session.close();
+        sf.close();
+    }
 }
